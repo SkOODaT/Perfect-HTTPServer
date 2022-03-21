@@ -281,10 +281,12 @@ class HTTP11Request: HTTPRequest {
 				mimes = MimeReader(contentType)
 			}
 		}
-		data?.withMemoryRebound(to: UInt8.self, capacity: length) {
-			data in
-			for i in 0..<length {
-				workingBuffer.append(data[i])
+		if let ptr = data {
+			ptr.withMemoryRebound(to: UInt8.self, capacity: length) {
+				ptr in
+					for i in 0..<length {
+						self.workingBuffer.append(ptr[i])
+					}
 			}
 		}
 		if let mimes = self.mimes {
@@ -308,10 +310,12 @@ class HTTP11Request: HTTPRequest {
 				_ = connection.writeFully(bytes: Array("HTTP/1.1 100 Continue\r\n\r\n".utf8))
 			}
 		}
-		data?.withMemoryRebound(to: UInt8.self, capacity: length) {
-			data in
-			for i in 0..<length {
-				self.workingBuffer.append(data[i])
+		if let ptr = data {
+			ptr.withMemoryRebound(to: UInt8.self, capacity: length) {
+				ptr in
+					for i in 0..<length {
+						self.workingBuffer.append(ptr[i])
+					}
 			}
 		}
 	}
