@@ -17,11 +17,11 @@ let receiveWindowTopOff: Int = 25169664//1024*1*1024
 
 
 // receives notification of an unexpected network shutdown
-protocol HTTP2NetErrorDelegate: class {
+protocol HTTP2NetErrorDelegate: AnyObject {
 	func networkShutdown()
 }
 
-protocol HTTP2FrameReceiver: class {
+protocol HTTP2FrameReceiver: AnyObject {
 	func receiveFrame(_ frame: HTTP2Frame)
 }
 
