@@ -13,7 +13,7 @@ let package = Package(
 	dependencies: [
         .package(name: "PerfectNet", url: "https://github.com/SkOODaT/Perfect-Net.git", .branch("SKOODAT")),
         .package(name: "PerfectHTTP", url: "https://github.com/SkOODaT/Perfect-HTTP.git", .branch("SKOODAT")),
-        .package(name: "PerfectCZlib", url: "https://github.com/123FLO321/Perfect-CZlib-src.git", .branch("swift5"))
+        .package(name: "PerfectCZlib", url: "https://github.com/SkOODaT/Perfect-CZlib-src.git", .branch("SKOODAT"))
 	],
 	targets: [
 		.target(name: "PerfectCHTTPParser", dependencies: []),
